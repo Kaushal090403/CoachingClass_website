@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<center>
+    <h1>Add Courses Page</h1>
+    <form method="post" action="{% url 'addcourses' %}" style="width: 120%; margin: auto; text-align: left;">
+        {% csrf_token %}
+        <table style="width: 100%; border-collapse: collapse;">
+            {{ form.as_table }}
+        </table>
+        <br>
+        <input type="submit" value="Save Course" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; border-radius: 5px;">
+    </form>
+    <br>
+    <div style="color: green;">{{ msg }}</div>
+</center>
+
+{% endblock %}

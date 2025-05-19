@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<center>
+    <h1>Courses Page</h1>
+    <form method="post" action="{% url 'addcourses' %}">
+        {% csrf_token %}
+        <!-- Your form fields here -->
+        <input type="submit" value="Add Courses" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer;">
+    </form>
+    
+    <br><br>
+    <table border="3" style="width: 50%; text-align: center; border-collapse: collapse;">
+        <thead>
+            <tr style="background-color: #f2f2f2;">
+                <th>Course ID</th>
+                <th>Course Name</th>
+                <th>Course Fees</th>
+                <th>Actions 1</th>
+                <th>Actions 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in data %}
+                <tr>
+                    <td>{{ d.did }}</td>
+                    <td>{{ d.dname }}</td>
+                    <td>{{ d.dfees }}</td>
+                    <td><a href="{% url 'updatecourse' id=d.did %}" onclick="return confirm('Are you sure?')" style="color: red;">Update</a></td>
+                    <td><a href="{% url 'deletecourse' id=d.did %}" onclick="return confirm('Are you sure?')" style="color: red;">Delete</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</center>
+{% endblock %}

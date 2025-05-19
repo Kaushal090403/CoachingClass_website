@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<center>
+    <h1>Student Page</h1>
+    <a href="{% url 'addstudent' %}" style="padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Add Student</a>
+    <br><br>
+    <table border="3" style="width: 600px; text-align: center; border-collapse: collapse;">
+        <thead>
+            <tr style="background-color: #f2f2f2;">
+                <th>Roll Number</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Actions 1</th>
+                <th>Actions 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in data %}
+                <tr>
+                    <td>{{ d.rno }}</td>
+                    <td>{{ d.name }}</td>
+                    <td>{{ d.dept }}</td>
+                    <td><a href="{% url 'updatestudent' id=d.rno %}" onclick="return confirm('Are you sure?')" style="color: red;">Update</a></td>
+                    <td><a href="{% url 'deletestudent' id=d.rno %}" onclick="return confirm('Are you sure?')" style="color: red;">Delete</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</center>
+{% endblock %}

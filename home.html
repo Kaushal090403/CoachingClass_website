@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const slider = document.querySelector('.slider');
+        const images = document.querySelectorAll('.slider-img');
+        let currentIndex = 0;
+        const totalImages = images.length;
+
+        function showNextImage() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            const offset = -currentIndex * 100;
+            slider.style.transform = `translateX(${offset}%)`;
+        }
+
+        setInterval(showNextImage, 1000);
+    });
+</script>
+
+    <div class="welcome-container">
+        <h1>Welcome, {{ user.username }}!</h1>
+        <p>
+            We’re thrilled to have you join our Coding Class community! 🎉
+        </p>
+        <div class="slider-container">
+            <div class="slider">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtIbLThUw6zq6uEPFpHlw1rbCOrrXCx2YApw&s" alt="Coding" class="slider-img">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuc9xTnTuGxuDhpB1ftXWLcf2J6x1oyKOyMdzEo_ZQU2FPxg5tXl9hDDN4wj_JWs0oX1c&usqp=CAU" alt="Practice" class="slider-img">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI5jRWe9tLKMzaUu82pawhHbNM7EZjfLpAaA&s" alt="Practice" class="slider-img">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnMpKBhKILZ_GvZk5wLkuBmTNeYguE5Fz6wg&s" alt="Practice" class="slider-img">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNDJC1M8rYjPkZLFiPMpU1fqUWCNH_9BHj74tsxAfrr8PDp3LI7PWaNg-efHruipYEeLM&usqp=CAU" alt="Practice" class="slider-img">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzoVwKH4vVGxbl7OE6gm05Qs4iBbDsoPGGtw&s" alt="Practice" class="slider-img">
+            </div>
+        </div>
+        <p>
+            At Code.class, we’re dedicated to providing high-quality coding education and fostering a supportive learning environment. Whether you’re here to sharpen your skills or embark on a new programming journey, we’ve got you covered.
+        </p>
+        <p>
+            Explore our range of courses designed to help you master various programming languages, frameworks, and technologies. Don’t hesitate to reach out if you have any questions or need assistance.
+        </p>
+        <p>
+            Let’s get coding and make the most of your learning experience!
+        </p>
+    </div>
+
+<style>
+    .welcome-container {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .slider-container {
+        width: 30%;
+        width: 30%;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .slider {
+        display: flex;
+        transition: transform 2s ease-in-out;
+    }
+
+    .slider-img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        flex-shrink: 0;
+    }
+</style>
+
+{% endblock %}
